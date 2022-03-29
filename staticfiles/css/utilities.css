@@ -1,0 +1,22 @@
+/* Text colors */
+.text-primary{
+    color: #0284d0;
+}
+
+.text-secondary{
+    color: #d00202;
+}
+/*Button*/
+.btn {
+    cursor: pointer;
+    display:inline-block;
+    padding: 10px 30px;
+    color: #004467;
+    background-color: #8c8c8c;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn:hover {
+    opacity: 0.6;
+}
