@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+    <div class="auth">
+        <h1>ГАЛАТЕХ ТУРБО ЕООД</h1>
+         <form method="post" action="{% url 'register user' %}">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-primary mt-2" type="submit">Register</button>
+            </form>
+    </div>
