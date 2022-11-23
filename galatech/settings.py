@@ -38,7 +38,11 @@ DJANGO_DEF_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
-PROJECT_APPS = ('galatech.web',)
+PROJECT_APPS = ('galatech.auth_app',
+                'galatech.analytics',
+                'galatech.payment',
+                'galatech.shop',
+                'galatech.web',)
 
 THIRD_PARTY_APPS = ()
 
@@ -131,6 +135,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (BASE_DIR / 'staticfiles',)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+# default user model
+AUTH_USER_MODEL = 'auth_app.GalatechUser'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
