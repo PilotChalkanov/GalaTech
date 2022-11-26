@@ -1,15 +1,16 @@
 from django.contrib.auth import base_user as auth_base
+from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.hashers import make_password
 
 
-class GalatechUserManager(auth_base.BaseUserManager):
+class GalaTechUserManager(BaseUserManager):
 
     def _create_user(self, email, password, **extra_fields):
         """
         Create and save a user with the given  email, and password.
         """
         if not email:
-            raise ValueError("The given email must be set")
+            raise ValueError("Email is mandatory")
         email = self.normalize_email(email)
         # Lookup the real model class from the global app registry so this
         # manager method can be used in migrations. This is fine because
@@ -22,6 +23,8 @@ class GalatechUserManager(auth_base.BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
+        if not email:
+            raise ValueError("Email is mandatory")
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password=None, **extra_fields):

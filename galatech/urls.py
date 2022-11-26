@@ -19,5 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('', include('galatech.auth_app.urls')),
+    path('', include('galatech.web.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,10 +1,12 @@
 from django.urls import path
-
-from galatech.auth_app.views import UserLoginView, DashboardView, TicketCreateView
+from galatech.auth_app.views import UserLoginView, UserRegisterView, UserLogoutView, FarewellView, ProfileCreateView
 
 urlpatterns = (
-    path('login/', UserLoginView.as_view(), name='login user'),
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
-    path('ticket/create', TicketCreateView.as_view(), name='ticket-create'),
+    path('login/', UserLoginView.as_view(), name='login'),
+    path('register/', UserRegisterView.as_view(), name='register'),
+    path('profile/', ProfileCreateView.as_view(), name='profile'),
+    path('logout/', UserLogoutView.as_view(), name='logout'),
+    path('farewell/', FarewellView.as_view(), name='farewell'),
+
 
 )

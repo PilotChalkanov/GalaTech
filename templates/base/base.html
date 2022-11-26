@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Турбокомпресори">
-    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -18,19 +17,29 @@
     <div class="turbo-fusion">
         <div id="navbar" class="navbar">
             <h1 class="logo">
-                <a href="#home"><span class="text-primary">Gala</span>tech</a>
+                <a href="{% url 'index' %}"><span class="text-primary">Gala</span>tech</a>
             </h1>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#home">Services</a></li>
                     <li><a href="#home">Products</a></li>
                     <li><a href="#home">Contacts</a></li>
-                    <li><a href="#home">Log in</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href={% url 'login' %}>Log in</a></li>
+                    <li>
+                        <a href="{% url 'profile' %}">
+                            <img src="{% static 'images/avatar.png' %}" alt="Avatar"  class="avatar">
+                        </a>
+                    </li>
                 </ul>
+
             </nav>
+
+
         </div>
+
         {% block page_content %}
         {% endblock %}
     </div>

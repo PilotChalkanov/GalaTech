@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div id="home-content">
+        <h1>Welcome to <span class="text-primary">Gala</span>tech LTD</h1>
+        <form method="post">
+             {% csrf_token %}
+            <div class="wrapper">
+                <div id="register-form">
+                    <label id="label-inner"> First Name</label>
+                    {{ form.first_name }}
+                    <label id="label-inner"> Last Name </label>
+                    {{ form.last_name }}
+                    <label id="label"> Age </label>
+                    {{ form.age }}
+                    <label id="label-address"> Address line 1 </label>
+                    {{ form.address }}
+                    <label id="label-address"> Address line 2 </label>
+                    {{ form.address }}
+                    <label id="label"> Upload Photo </label>
+                    {{ form.photo }}
+                    <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
