@@ -1,0 +1,28 @@
+{% extends 'base/dashboard.html' %}
+{% block page_content %}
+    <div id="home-content">
+        <div class="wrapper">
+            <div class="main-style-form" id="tickets-btn-section">
+                <button class="btn btn-primary">Add Ticket</button>
+                <button class="btn btn-primary">Show Tickets</button>
+            </div>
+            <div class="main-style-form" id="ticket-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label id="label-inner"> Title</label>
+                    {{ form.title }}
+                    <label id="label-inner"> Type </label>
+                    {{ form.type }}
+                    <label id="label"> Status </label>
+                    {{ form.status }}
+                    <label id="label"> Description </label>
+                    {{ form.description }}
+                    <label id="assignee"> Assignee </label>
+                    {{ form.assignee }}
+                    <button class="btn btn-primary" type="submit" value="Submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

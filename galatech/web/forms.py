@@ -8,7 +8,7 @@ class TicketCreateForm(forms.ModelForm):
     """Ticket form for creating work related jobs"""
     class Meta:
         model = Ticket
-        fields = ('title', 'description')
+        fields = ('__all__')
 
 class TicketEditForm:
     pass

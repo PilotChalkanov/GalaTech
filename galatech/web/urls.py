@@ -1,13 +1,12 @@
-from django.conf import settings
-from django.conf.urls.static import static
-from galatech.web.views.ticket import TicketCreateView, DashboardView
-from django.urls import path, include
+from django.urls import path
 
-from galatech.web.views.generic import HomeView
+from galatech.web.views.generic import HomeView, DashboardView
+from galatech.web.views.ticket import TicketCreateView, TicketListView
 
 urlpatterns = [
 
     path('', HomeView.as_view(), name='index'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('dashboard/tickets', TicketListView.as_view(), name='tickets'),
     path('ticket/create', TicketCreateView.as_view(), name='ticket-create'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

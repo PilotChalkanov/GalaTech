@@ -1,9 +1,9 @@
-from django.contrib.auth import models as auth_models
+from django.contrib.auth import models as auth_models, password_validation
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
 from galatech.auth_app.common.validators import MaxFileSizeValidator
-from galatech.auth_app.managers import GalaTechUserManager
+from galatech.auth_app.managers import GalaTechUserManager, GalaTechProfileManager
 
 
 class GalaTechUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -15,6 +15,11 @@ class GalaTechUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         unique=True,
         null=False,
         blank=False
+    )
+
+    staff_id = models.IntegerField(
+        null=True,
+        blank=True,
     )
 
     createdTimestamp = models.DateTimeField(
@@ -53,6 +58,7 @@ class GalaTechProfile(models.Model):
     address = models.CharField(
         max_length=1000,
     )
+
     user = models.OneToOneField(
         GalaTechUser,
         on_delete=models.CASCADE,
@@ -60,7 +66,8 @@ class GalaTechProfile(models.Model):
     )
 
     photo = models.ImageField(
-        upload_to='tickets',
+        upload_to='profiles',
+        default= 'profiles/avatar.png',
         validators=(
             MaxFileSizeValidator(5),
         )

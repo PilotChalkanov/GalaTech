@@ -1,11 +1,12 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
     <div id="home-content">
-        <h1>Welcome to <span class="text-primary">Gala</span>tech LTD</h1>
+
         <form method="post">
             {% csrf_token %}
             <div class="wrapper">
-                <div id="login-form">
+                <div class="main-style-form" id="login-form">
+                    <h1 class="text-primary">Sign in</h1>
                     <label id="label-inner"> email</label>
                     {{ form.username }}
                     <label id="label-inner"> password </label>
@@ -13,8 +14,8 @@
                     <div>
                         <button class="btn btn-primary" type="submit">Log in</button>
                     </div>
-                    <h3 class="text-add-info">If you don't have an account,</h3>
-                    <h3 class="text-add-info"><a href="/register">signUp</a> instead.</h3>
+                    <h3 class="text-add-info">If you don't have an account, <a href="/register">signUp</a> instead.</h3>
+
                 </div>
 
             </div>

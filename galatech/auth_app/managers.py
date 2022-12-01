@@ -20,7 +20,9 @@ class GalaTechUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, staff_id=None, password=None, **extra_fields):
+        if staff_id is not None:
+            extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         if not email:
@@ -37,3 +39,7 @@ class GalaTechUserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self._create_user(email, password, **extra_fields)
+
+
+class GalaTechProfileManager(BaseUserManager):
+    pass

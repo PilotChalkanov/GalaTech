@@ -28,20 +28,14 @@
                     <li><a href="#home">Contacts</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <li><a href={% url 'login' %}>Log in</a></li>
-                    <li>
-                        <a href="{% url 'profile' %}">
-                            <img src="{% static 'images/avatar.png' %}" alt="Avatar"  class="avatar">
-                        </a>
-                    </li>
                 </ul>
-
             </nav>
-
-
         </div>
-
+    <div class ="root">
         {% block page_content %}
         {% endblock %}
+    </div>
+
     </div>
     <div id="footer">
         <p> Galatech &reg; Varna</p>
