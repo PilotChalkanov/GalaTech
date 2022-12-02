@@ -5,5 +5,5 @@ register = Library()
 
 @register.filter
 def placeholder(field, text):
-    field.field.widget.attrs['placeholder'] = text
+    field.field.widget.attrs["placeholder"] = text
     return field

@@ -14,12 +14,15 @@ def send_email_on_successful_sign_up(instance, created, **kwargs):
     if not created:
         return
 
-    email_content = render_to_string('email_templates/successful_sign_up.html', {
-        'user': instance,
-    })
+    email_content = render_to_string(
+        "email_templates/successful_sign_up.html",
+        {
+            "user": instance,
+        },
+    )
 
     send_mail(
-        subject='Welcome to Petstagram!',
+        subject="Welcome to Petstagram!",
         message=strip_tags(email_content),
         html_message=email_content,
         from_email=settings.DEFAULT_FROM_EMAIL,

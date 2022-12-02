@@ -6,11 +6,12 @@
             {% csrf_token %}
             <div class="wrapper">
                 <div class="main-style-form" id="login-form">
-                    <h1 class="text-primary">Sign in</h1>
+                    <h3 class="text-primary">Sign in</h3>
                     <label id="label-inner"> email</label>
                     {{ form.username }}
                     <label id="label-inner"> password </label>
                     {{ form.password }}
+                    <h3 class="text-add-info"><a href="{% url 'password_reset' %}">forgotten password</a></h3>
                     <div>
                         <button class="btn btn-primary" type="submit">Log in</button>
                     </div>

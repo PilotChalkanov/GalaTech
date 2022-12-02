@@ -4,7 +4,6 @@ from django.utils.deconstruct import deconstructible
 
 @deconstructible
 class MaxFileSizeValidator:
-
     def __init__(self, max_size):
         self.max_size = max_size
 
@@ -15,4 +14,4 @@ class MaxFileSizeValidator:
 
     @staticmethod
     def __megabytes_to_bytes(value):
-        return value * (1024 ** 2)
+        return value * (1024**2)
