@@ -36,7 +36,7 @@
             {% else %}
                 <li><a href="{% url 'days-off-req' %}">Day-Off Req</a></li>
             {% endif %}
-            <li><a href="{% url 'logout' %}">Log out</a></li>
+            <li><a href="{% url 'logout-confirm' %}">Log out</a></li>
             <li>
                 <a href="{% url 'profile-edit' request.user.id %}">
                     <img src="{{ request.user.galatechprofile.photo.url }}" alt="" class="avatar">

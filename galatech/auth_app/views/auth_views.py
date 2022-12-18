@@ -58,17 +58,14 @@ class CreateProfileView(generic_views.CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class UserLogoutConfirmationView(auth_views.TemplateView):
+    template_name = "auth_app/logout.html"
 
 class UserLogoutView(auth_views.LogoutView):
-    """The login logic for the user login"""
-
-    pass
-
+    success_url = reverse_lazy("farewell")
 
 class FarewellView(auth_views.TemplateView):
-    """The login logic for the user login"""
-
-    template_name = "auth_app/logout.html"
+    template_name = "auth_app/farewell.html"
 
 @login_required
 def update_profile(request, pk):
