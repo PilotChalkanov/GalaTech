@@ -1,13 +1,19 @@
+from django.contrib import messages
 from django.contrib.auth import views as auth_views, login, get_user_model, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView, PasswordResetView, LoginView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as generic_views
-from django.views.generic import FormView
-from galatech.auth_app.forms import UserRegistrationForm, ProfileCreationForm, ChangeUserPasswordForm, \
-    UserPasswordResetForm
-from galatech.auth_app.models import GalaTechProfile, GalaTechUser
+from django.views.generic import UpdateView
+from galatech.auth_app.forms import (
+    UserRegistrationForm,
+    ProfileCreationForm,
+    ChangeUserPasswordForm,
+    UserPasswordResetForm, ProfileEditForm,
+)
+from galatech.auth_app.models import GalaTechProfile
 
 UserModel = get_user_model()
 
@@ -63,46 +69,37 @@ class FarewellView(auth_views.TemplateView):
 
     template_name = "auth_app/logout.html"
 
+@login_required
+def update_profile(request, pk):
+    profile = GalaTechProfile.objects.get(user_id=pk)
+    if request.method == 'POST':
+        profile_form = ProfileEditForm(request.POST, request.FILES,instance=profile)
 
-class ProfileDetailsView(LoginRequiredMixin, FormView):
-    template_name = "auth_app/profile_edit.html"
-    form_class = ProfileCreationForm
-    success_url = reverse_lazy("profile")
-    object = None
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='dashboard')
 
-    def get(self, request, *args, **kwargs):
-        self.object = GalaTechProfile.objects.get(pk=request.user.id)
-        return super().get(request, *args, **kwargs)
+    profile_form = ProfileEditForm(instance=profile)
 
-    def post(self, request, *args, **kwargs):
-        self.object = GalaTechProfile.objects.get(pk=request.user.id)
-        return super().post(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        self.object.profile_image = form.cleaned_data["photo"]
-        self.object.save()
-        return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["profile"] = self.object
-
+    return render(request, 'auth_app/profile_edit.html', {'form': profile_form})
 
 class ChangeUserPasswordView(PasswordChangeView):
     template_name = "auth_app/change_user_password.html"
     form_class = ChangeUserPasswordForm
     success_url = reverse_lazy("success-url")
+
     def get_success_url(self):
         if self.success_url:
             logout(self.request)
             return self.success_url
         return super().get_success_url()
 
+
 class SuccessPassChangeView(auth_views.TemplateView):
     template_name = "auth_app/success.html"
+
 
 class UserPasswordResetView(PasswordResetView):
     form_class = UserPasswordResetForm
     template_name = "auth_app/password_reset.html"
-
-

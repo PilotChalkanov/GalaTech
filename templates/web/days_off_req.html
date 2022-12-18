@@ -1,6 +1,6 @@
 {% extends 'base/dashboard.html' %}
 {% block page_content %}
-    <div id="">
+    <div id="root">
 
         {% if request.user.is_staff and request.user.is_superuser == false %}
         <form method="POST" enctype="multipart/form-data">

@@ -22,6 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("galatech.auth_app.urls")),
     path("", include("galatech.web.urls")),
+    path("", include("galatech.shop.urls")),
 ]
 
 if settings.DEBUG:

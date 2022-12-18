@@ -21,14 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-'''
+"""
 dev -> localhost, 127.0.0.1
-prd -> prd_host'''
+prd -> prd_host"""
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -96,7 +96,7 @@ DATABASES = {
         # "HOST": os.getenv("DB_HOST"),
         # "PORT": os.getenv("DB_PORT",'5432'),
         # "NAME": os.getenv("DB_NAME"),
-        "NAME":"galatech",
+        "NAME": "galatech",
         "ENGINE": "django.db.backends.postgresql",
         # "USER": os.getenv("DB_USER"),
         "USER": "postgres",
@@ -156,36 +156,36 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGOUT_REDIRECT_URL = "farewell"
 
-#email settings
+# email settings
 if DEBUG:
-    EMAIL_BACKEND="django.core.mail.backends.console.EmailBackend"
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = ' ' #your email-id
-    EMAIL_HOST_PASSWORD = ' ' #your password
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = " "  # your email-id
+    EMAIL_HOST_PASSWORD = " "  # your password
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
 
-LOGGING_LVL = os.getenv('LOGGING_LVL')
+LOGGING_LVL = os.getenv("LOGGING_LVL")
 
 LOGGING = {
-    'version': 1,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
+    "version": 1,
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
         }
     },
-    'handlers': {
-        'console': {
-            'level': LOGGING_LVL,
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
+    "handlers": {
+        "console": {
+            "level": LOGGING_LVL,
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
         }
     },
-    'loggers': {
-        'django.db.backends': {
-            'level': LOGGING_LVL,
-            'handlers': ['console'],
+    "loggers": {
+        "django.db.backends": {
+            "level": LOGGING_LVL,
+            "handlers": ["console"],
         }
-    }
+    },
 }

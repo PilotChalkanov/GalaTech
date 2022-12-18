@@ -1,5 +1,11 @@
+import os
+from os.path import join
+
 from django import forms
+from django.conf import settings
 from django.contrib.auth import forms as auth_forms, get_user_model
+from django.core.exceptions import ValidationError
+
 from galatech.auth_app.models import GalaTechProfile
 from galatech.shop.models import Product
 
@@ -41,6 +47,20 @@ class ProfileCreationForm(forms.ModelForm):
             ),
         }
 
+
+class ProfileEditForm(forms.ModelForm):
+
+    class Meta:
+        model = GalaTechProfile
+        exclude = ('user',)
+
+    def save(self, commit=True):
+        db_profile = GalaTechProfile.objects.get(pk=self.instance.user_id)
+        if commit:
+            image_path = join(settings.MEDIA_ROOT, str(db_profile.photo))
+            os.remove(image_path)
+        return super().save(commit)
+
 class ChangeUserPasswordForm(auth_forms.PasswordChangeForm):
     """A form for changing user's password."""
 
@@ -61,8 +81,9 @@ class ChangeUserPasswordForm(auth_forms.PasswordChangeForm):
                 attrs={
                     "placeholder": "Confirm password",
                 }
-            )
+            ),
         }
+
 
 class UserPasswordResetForm(auth_forms.PasswordResetForm):
     class Meta:
@@ -70,10 +91,12 @@ class UserPasswordResetForm(auth_forms.PasswordResetForm):
             "email": forms.EmailInput(
                 attrs={
                     "placeholder": "Enter your email",
-                },)
+                },
+            )
         }
+
 
 class ProductCreateForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields =('__all__')
+        fields = "__all__"

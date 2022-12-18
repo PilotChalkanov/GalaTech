@@ -1,0 +1,32 @@
+{% extends 'base/dashboard.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+    <div id="">
+
+        <div class="wrapper">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="main-style-form" id="register-form">
+                <h3>Edit<span class="text-primary">Profile</span></h3>
+                    {% csrf_token %}
+                    <label> Profile Photo</label>
+                    <img src="{{ request.user.galatechprofile.photo.url }}" alt=""  class="avatar">
+                    <label> First Name</label>
+                    {{ form.first_name }}
+                    <label> Last Name</label>
+                    {{ form.last_name }}
+                    <label> Age </label>
+                    {{ form.age }}
+                    <label> Address </label>
+                    {{ form.address }}
+                    {% if request.user.is_staff %}
+                        <label> Upload profile photo</label>
+                        {{ form.photo }}
+                    {% endif %}
+                    <button class="btn btn-primary" type="submit" value="Submit">Update</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

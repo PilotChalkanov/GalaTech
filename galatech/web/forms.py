@@ -1,6 +1,10 @@
 from django import forms
 
-from galatech.web.models import Ticket, DayOffRequestModel, ContactMessageModel
+from galatech.web.models import (
+    Ticket,
+    EmployeeVacationRequestModel,
+    ContactMessageModel,
+)
 
 
 class TicketCreateForm(forms.ModelForm):
@@ -9,7 +13,7 @@ class TicketCreateForm(forms.ModelForm):
 
     class Meta:
         model = Ticket
-        fields = ('__all__')
+        fields = "__all__"
 
 
 class TicketEditForm:
@@ -21,17 +25,18 @@ class TicketDeleteForm:
 
 
 class DateInput(forms.DateInput):
-    input_type = 'date'
+    input_type = "date"
 
-class DaysOffRequestForm(forms.ModelForm):
+
+class EmplotyeeVacationRequestForm(forms.ModelForm):
     """DaysOff request form"""
 
     class Meta:
-        model = DayOffRequestModel
-        exclude = ('user',)
+        model = EmployeeVacationRequestModel
+        exclude = ("user",)
         widgets = {
-            'fromDate': DateInput(),
-            'toDate': DateInput(),
+            "fromDate": DateInput(),
+            "toDate": DateInput(),
         }
 
 
@@ -40,4 +45,4 @@ class ContactMessageForm(forms.ModelForm):
 
     class Meta:
         model = ContactMessageModel
-        fields = ('__all__')
+        fields = "__all__"

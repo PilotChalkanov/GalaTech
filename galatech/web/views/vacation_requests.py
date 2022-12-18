@@ -4,13 +4,13 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 
-from galatech.web.forms import DaysOffRequestForm
-from galatech.web.models import DayOffRequestModel
+from galatech.web.forms import EmplotyeeVacationRequestForm
+from galatech.web.models import EmployeeVacationRequestModel
 
 
-class DaysOffRequestView(LoginRequiredMixin,CreateView):
-    model = DayOffRequestModel
-    form_class = DaysOffRequestForm
+class EmployeeVacationRequestView(LoginRequiredMixin, CreateView):
+    model = EmployeeVacationRequestModel
+    form_class = EmplotyeeVacationRequestForm
     template_name = "web/days_off_req.html"
     success_url = reverse_lazy("dashboard")
 
@@ -21,17 +21,18 @@ class DaysOffRequestView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 
-class ListDaysOffRequestView(LoginRequiredMixin,ListView):
+class ListEmployeeVacationRequestView(LoginRequiredMixin, ListView):
 
     template_name = "web/day_off_req_table.html"
     context_object_name = "requests_"
-    model = DayOffRequestModel
+    model = EmployeeVacationRequestModel
 
     def post(self, request, *args, **kwargs):
-        input_request_id = request.POST.getlist('approvedRequests')
-        req_to_approve = DayOffRequestModel.objects.filter(id__in=input_request_id)
+        input_request_id = request.POST.getlist("approvedRequests")
+        req_to_approve = EmployeeVacationRequestModel.objects.filter(
+            id__in=input_request_id
+        )
         if req_to_approve:
             req_to_approve.update(is_approved=True)
-            return redirect('list-days-off-req')
-        return redirect('list-days-off-req')
-
+            return redirect("list-days-off-req")
+        return redirect("list-days-off-req")
