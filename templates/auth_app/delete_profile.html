@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div class="main-style-form">
+        <h1>{{ request.user.galatechprofile.first_name }} are you sure you want to delete your Account?</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="confirm-delete">
+           <button class="btn btn-primary" type="submit">Confirm</button>
+           <a class="btn btn-primary" href="{% url 'profile-edit' request.user.id %}">Go Back</a>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

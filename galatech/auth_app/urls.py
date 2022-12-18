@@ -7,7 +7,7 @@ from galatech.auth_app.views.auth_views import (
     FarewellView,
     ChangeUserPasswordView,
     UserPasswordResetView,
-    SuccessPassChangeView, update_profile,
+    SuccessPassChangeView, update_profile, DeleteProfileView,
 )
 
 from galatech.auth_app.views.products import CreateProductView
@@ -17,6 +17,7 @@ urlpatterns = (
     path("register/", UserRegisterView.as_view(), name="register"),
     path("profile/", CreateProfileView.as_view(), name="profile"),
     path("profile/edit/<int:pk>", update_profile, name="profile-edit"),
+    path("profile/delete/<int:pk>", DeleteProfileView.as_view(), name="delete-profile"),
     path("logout/", UserLogoutView.as_view(), name="logout"),
     path("farewell/", FarewellView.as_view(), name="farewell"),
     path("password_change/", ChangeUserPasswordView.as_view(), name="password_change"),

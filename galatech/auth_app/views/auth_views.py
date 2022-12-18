@@ -3,10 +3,11 @@ from django.contrib.auth import views as auth_views, login, get_user_model, logo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView
+from django.contrib.messages import success
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as generic_views
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 from galatech.auth_app.forms import (
     UserRegistrationForm,
     ProfileCreationForm,
@@ -81,8 +82,12 @@ def update_profile(request, pk):
             return redirect(to='dashboard')
 
     profile_form = ProfileEditForm(instance=profile)
-
     return render(request, 'auth_app/profile_edit.html', {'form': profile_form})
+
+class DeleteProfileView(LoginRequiredMixin,DeleteView):
+    template_name = "auth_app/delete_profile.html"
+    model = GalaTechProfile
+    success_url = reverse_lazy('farewell')
 
 class ChangeUserPasswordView(PasswordChangeView):
     template_name = "auth_app/change_user_password.html"

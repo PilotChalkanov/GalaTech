@@ -61,6 +61,7 @@ class ProfileEditForm(forms.ModelForm):
             os.remove(image_path)
         return super().save(commit)
 
+
 class ChangeUserPasswordForm(auth_forms.PasswordChangeForm):
     """A form for changing user's password."""
 

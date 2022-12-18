@@ -24,6 +24,9 @@
                         {{ form.photo }}
                     {% endif %}
                     <button class="btn btn-primary" type="submit" value="Submit">Update</button>
+                    <h3 class="text-add-info">delete account: <a href="{% url 'delete-profile' request.user.id %}">click here</a> </h3>
+
+
                 </div>
             </form>
         </div>
