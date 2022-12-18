@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views, login, get_user_model, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView, PasswordResetView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView, LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as generic_views

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from urllib.request import localhost
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 dev -> localhost, 127.0.0.1
 prd -> prd_host'''
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -93,12 +93,15 @@ WSGI_APPLICATION = "galatech.wsgi.application"
 # To be changed
 DATABASES = {
     "default": {
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT",'5432'),
-        "NAME": os.getenv("DB_NAME"),
+        # "HOST": os.getenv("DB_HOST"),
+        # "PORT": os.getenv("DB_PORT",'5432'),
+        # "NAME": os.getenv("DB_NAME"),
+        "NAME":"galatech",
         "ENGINE": "django.db.backends.postgresql",
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
+        # "USER": os.getenv("DB_USER"),
+        "USER": "postgres",
+        # "PASSWORD": os.getenv("DB_PASSWORD"),
+        "PASSWORD": "12345",
     }
 }
 
@@ -162,3 +165,27 @@ if DEBUG:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
+
+LOGGING_LVL = os.getenv('LOGGING_LVL')
+
+LOGGING = {
+    'version': 1,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': LOGGING_LVL,
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': LOGGING_LVL,
+            'handlers': ['console'],
+        }
+    }
+}

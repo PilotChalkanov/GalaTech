@@ -2,12 +2,21 @@
 {% load static %}
 {% block page_content %}
     <div id="about-content">
-        <div class="wrapper">
-            <div class="main-style-form">
-                <h3 class="text-primary">Check availability</h3>
-                <button class="btn btn-primary" type="submit">Check</button>
+        <div class="wrapper" id="about-container-1">
+            <div class="main-style-form" id="details-form-about" >
+                <h3>Contact us</h3>
+                <h3><span class="text-highlight">Address:</span>  blvd "Tsar Osvoboditel"</h3>
+                <h3>9023 Varna, Bulgaria</h3>
+                <h3><span class="text-highlight">tel.:</span>  087 826 1581 </h3>
+                <h3><span class="text-highlight">email:</span> GalaTech545@gmail.com</h3>
+                <h3>Also make an appointment online</h3>
+                <a href="{% url 'contact' %}">
+                    <button class="btn btn-primary" type="submit">Contact Us</button>
+                </a>
+
             </div>
             <div class="main-style-form">
+                <div id="map"></div>
             </div>
         </div>
         <div class="main-style-form">

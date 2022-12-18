@@ -1,0 +1,30 @@
+{% extends 'base/dashboard.html' %}
+{% block page_content %}
+    <div id="">
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="wrapper">
+                <div class="main-style-form" id="product-form">
+                    <h3 class="text-primary">Sign in</h3>
+                    <label id="label-inner"> Product name</label>
+                    {{ form.product_name }}
+                    <label id="label-inner"> Product Category </label>
+                    {{ form.category }}
+                    <label id="label-inner"> Product Short Description </label>
+                    {{ form.short_desc }}
+                    <label id="label-inner"> Product Catalogue Number </label>
+                    {{ form.product_cat_number }}
+                    <label id="label-inner"> Product Photo </label>
+                    {{ form.photo }}
+                    <div>
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </div>
+                    <h3 class="text-add-info">Add product to the online shop page.</h3>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

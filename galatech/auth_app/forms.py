@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 from galatech.auth_app.models import GalaTechProfile
+from galatech.shop.models import Product
 
 
 class UserRegistrationForm(auth_forms.UserCreationForm):
@@ -71,3 +72,8 @@ class UserPasswordResetForm(auth_forms.PasswordResetForm):
                     "placeholder": "Enter your email",
                 },)
         }
+
+class ProductCreateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields =('__all__')

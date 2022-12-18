@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load placeholders %}
+{% block page_content %}
+    <div id="contact-content">
+        <form method="POST">
+            <div class="wrapper">
+                <div class="main-style-form" id="register-form">
+                    {% csrf_token %}
+                    <h3 class="text-primary">Contact Us</h3>
+                    <label> Email</label>
+                    {{ form.email|placeholder:'Email' }}
+                    <label> Title</label>
+                    {{ form.title|placeholder:'Title' }}
+                    <label> Message</label>
+                    {{ form.message|placeholder:'Message' }}
+                    <button class="btn btn-primary" type="submit" value="Submit">Send</button>
+                    <h3 class="text-add-info">Please send us your request. We will try to answer as soon as possible.</h3>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

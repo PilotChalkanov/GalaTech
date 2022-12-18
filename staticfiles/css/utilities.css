@@ -1,12 +1,15 @@
 .text-primary {
-    color: #0284d0;
+    color: #0046d7;
     font-weight: bolder;
 }
 
 .text-additional {
     font-size: 5px;
 }
+.text-highlight{
+    color: #020101;
 
+}
 .wrapper {
     width: 40%;
     height: 30%;
@@ -93,5 +96,78 @@
     display: flex;
     margin-top:20px;
     flex-direction: row;
+}
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 500px;
+  /* The width is the width of the web page */
+}
+#about-container-1{
+    width: 600px;
+}
+#details-form-about{
+    width: 90%;
+    color: #fff;
+}
+
+.table-main{
+    background-color: #4AC1F7FF
+}
+.table-main{
+     background-color:#00002899 ;
+    border: 1px solid;
+   border-radius: 15px;
+   box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+   max-width: calc(100% - 2em);
+   margin: 1em auto;
+   overflow: hidden;
+   width: 800px;
+}
+.table-main{
+    border-collapse: collapse;
+}
+.table-main thead th{
+    background-color: #54585d;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #54585d;
+}
+#days-off-table-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-main tbody td {
+    margin: 10px;
+    padding:15px;
+	border: 1px solid #211919;
+}
+
+.table-main img{
+
+    width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.table-header {
+   background-color: #4AC1F7FF;
+   color: white;
+   font-size: 1.5em;
+   padding: 1rem;
+   text-align: center;
+   text-transform: uppercase;
+}
+
+#request-status-pending{
+    background-color: #efef63;
+    color: #1b1b1b;
+}
+#request-status-approved{
+    background-color: #105209;
+    color: #1b1b1b;
 }
 

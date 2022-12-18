@@ -9,37 +9,45 @@
     <meta name="description" content="Турбокомпресори">
     <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="module" src="{% static 'initMap.js' %}"></script>
     <title>Galatech | Турбокомпресори | Varna</title>
 </head>
 <body id="home">
-    <div class="turbo-fusion">
-        <div id="navbar" class="navbar">
+<div class="turbo-fusion">
+    <div id="navbar" class="navbar">
+        <div id="logo-avatar"><a href="{% url 'index' %}">
+            <img src="{% static 'images/galatech_logo_transp.png' %}" alt="" class="avatar">
+        </a>
             <h1 class="logo">
                 <a href="{% url 'index' %}"><span class="text-primary">Gala</span>tech</a>
             </h1>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="#home">Services</a></li>
-                    <li><a href="#home">Products</a></li>
-                    <li><a href="#home">Contacts</a></li>
-                    <li><a href="{% url 'register' %}">Register</a></li>
-                    <li><a href={% url 'login' %}>Log in</a></li>
-                </ul>
-            </nav>
         </div>
-    <div class ="root">
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="#home">Services</a></li>
+                <li><a href="#home">Products</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href={% url 'login' %}>Log in</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="root">
         {% block page_content %}
         {% endblock %}
     </div>
 
-    </div>
-    <div id="footer">
-        <p> Galatech &reg; Varna</p>
-        <p> Copyright 2022</p>
-    </div>
+</div>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4vBZeYj6fHBkh1Q26yIG9x-YwTinQFIE&callback=initMap&v=weekly"
+        defer
+></script>
+<div id="footer">
+    <p> Galatech &reg; Varna</p>
+    <p> Copyright 2022</p>
+</div>
 </body>
 </html>

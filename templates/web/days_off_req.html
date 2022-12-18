@@ -1,0 +1,28 @@
+{% extends 'base/dashboard.html' %}
+{% block page_content %}
+    <div id="">
+
+        {% if request.user.is_staff and request.user.is_superuser == false %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="wrapper">
+                <div class="main-style-form" id="product-form">
+                    <h3 class="text-primary">Request DaysOff</h3>
+                    <label for="date-from"> From date</label>
+                    {{ form.fromDate }}
+                    <label id="label-inner"> To date </label>
+                    {{ form.toDate }}
+                    <label id="label-inner"> Comments </label>
+                    {{ form.comments }}
+                    <div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    {% elif request.user.is_superuser %}
+            {% include 'web/day_off_req_table.html'  %}
+    {% endif %}
+    </div>
+{% endblock %}
