@@ -1,10 +1,8 @@
 {% extends 'base/dashboard.html' %}
 {% block page_content %}
-    <div id="">
-
+    <div CLASS="create-product-page-content">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="wrapper">
                 <div class="main-style-form" id="product-form">
                     <h3 class="text-primary">Sign in</h3>
                     <label id="label-inner"> Product name</label>
@@ -25,10 +23,8 @@
                         <button class="btn btn-primary" type="submit">Add</button>
                     </div>
                     <h3 class="text-add-info">Add product to the online shop page.</h3>
-
                 </div>
-
-            </div>
         </form>
+    {% include 'products/product_table.html' %}
     </div>
 {% endblock %}

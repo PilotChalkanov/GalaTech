@@ -2,60 +2,59 @@
 {% block page_content %}
     {% load static %}
 
-
     <div class="table-main">
         <div class="table-header">Days Off Requests</div>
         <form method="POST">
             {% csrf_token %}
-        <div class="table-content">
-            <table>
-                <thead>
-                <tr>
-                    <th>Employee</th>
-                    <th>From date</th>
-                    <th>To date</th>
-                    <th>Comments</th>
-                    <th>Status</th>
-                    <th>Approve</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    {% for req in requests_ %}
-                        <tr>
-                            <td>
-                                <div id="days-off-table-user">
-                                    {% if req.user.galatechprofile.photo.url %}
-                                        <img src="{{ req.user.galatechprofile.photo.url }}"
-                                             alt="">
-                                    {% else %}
-                                        <img src="{% static 'images/avatar.png' %}"
-                                             alt="">
-                                    {% endif %}
-                                    {{ req.user.galatechprofile.first_name }} {{ req.user.galatechprofile.last_name }}
-                                </div>
-                            </td>
+            <div class="table-content">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>From date</th>
+                        <th>To date</th>
+                        <th>Comments</th>
+                        <th>Status</th>
+                        <th>Approve</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {% for req in requests_ %}
+                            <tr>
+                                <td>
+                                    <div id="days-off-table-user">
+                                        {% if req.user.galatechprofile.photo.url %}
+                                            <img src="{{ req.user.galatechprofile.photo.url }}"
+                                                 alt="">
+                                        {% else %}
+                                            <img src="{% static 'images/avatar.png' %}"
+                                                 alt="">
+                                        {% endif %}
+                                        {{ req.user.galatechprofile.first_name }} {{ req.user.galatechprofile.last_name }}
+                                    </div>
+                                </td>
 
-                            <td>{{ req.fromDate }}</td>
-                            <td>{{ req.toDate }}</td>
-                            <td>{{ req.comments }}</td>
-                            {% if req.is_approved == False %}
-                                <td id="request-status-pending">
-                                    Pending
+                                <td>{{ req.fromDate }}</td>
+                                <td>{{ req.toDate }}</td>
+                                <td>{{ req.comments }}</td>
+                                {% if req.is_approved == False %}
+                                    <td id="request-status-pending">
+                                        Pending
+                                    </td>
+                                {% else %}
+                                    <td id="request-status-approved">
+                                        Approved
+                                    </td>
+                                {% endif %}
+                                <td>
+                                    <input type="checkbox" name="approvedRequests" value="{{ req.id }}">
                                 </td>
-                            {% else %}
-                                <td id="request-status-approved">
-                                    Approved
-                                </td>
-                            {% endif %}
-                            <td>
-                                <input type="checkbox" name="approvedRequests" value="{{ req.id }}">
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             <div>
                 <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
             </div>

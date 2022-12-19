@@ -29,7 +29,7 @@
             <li><a href="{% url 'ticket-create' %}">Tickets</a></li>
             <li><a href="#about">Calendar</a></li>
             {% if request.user.is_superuser %}
-                <li><a href="{% url 'create_product' %}">Add Products</a></li>
+                <li><a href="{% url 'create-product' %}">Add Products</a></li>
             {% endif %}
             {% if request.user.is_superuser %}
                 <li><a href="{% url 'list-days-off-req' %}">Day-Off Req</a></li>

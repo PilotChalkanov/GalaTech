@@ -96,8 +96,3 @@ class UserPasswordResetForm(auth_forms.PasswordResetForm):
             )
         }
 
-
-class ProductCreateForm(forms.ModelForm):
-    class Meta:
-        model = Product
-        fields = "__all__"
