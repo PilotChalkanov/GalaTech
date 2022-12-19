@@ -7,37 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Турбокомпресори">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
     <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="{% static 'initMap.js' %}"></script>
     <title>Galatech | Турбокомпресори | Varna</title>
 </head>
-<body id="home">
-    <div id="navbar" class="navbar">
-        <div id="logo-avatar"><a href="{% url 'index' %}">
-            <img src="{% static 'images/galatech_logo_transp.png' %}" alt="" class="avatar">
-        </a>
-            <h1 class="logo">
-                <a href="{% url 'index' %}"><span class="text-primary">Gala</span>tech</a>
-            </h1>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="#home">Services</a></li>
-                <li><a href="{% url 'products' %}">Products</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href={% url 'login' %}>Log in</a></li>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-lg-5">
+        <img src="{% static 'images/galatech_logo_transp.png' %}" alt="Logo" width="30" height="24"
+             class="avatar">
+        <a class="navbar-brand" href="{% url 'index' %}"><span class="text-primary">Gala</span>tech</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             </ul>
-        </nav>
+        </div>
     </div>
-    <div class="root">
-        {% block page_content %}
-        {% endblock %}
-    </div>
+</nav>
+<div class="root">
+    {% block page_content %}
+    {% endblock %}
+</div>
 
 
 <script

@@ -1,0 +1,44 @@
+{% load static %}
+    <div class="table-main">
+        <div class="table-header">Product Catalogue</div>
+        <div class="table-content">
+            <table class="table table-striped table-hover table-responsive">
+                <thead class="table-cyan">
+                <tr>
+                    <th>Product Number</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for p in products %}
+                        <tr>
+                            <td>{{ p.product_cat_number }}</td>
+                            <td>
+                                <div id="days-off-table-user">
+                                    {% if p.photo %}
+                                        <img src="{{ p.photo.url }}"
+                                             alt="">
+                                    {% else %}
+                                        <img src="{% static 'images/default_product.png' %}"
+                                             alt="">
+                                    {% endif %}
+                                    {{ p.product_name }}
+                                </div>
+                            </td>
+                            <td>{{ p.price }}</td>
+                            <td>{{ p.category }}</td>
+                            <td>{{ p.short_desc }}</td>
+                            <td class="wrapper-edit-btn"><a class="btn btn-primary">Edit</a></td>
+                            <td class="wrapper-delete-btn"><a class="btn btn-primary">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>

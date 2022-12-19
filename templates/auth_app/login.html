@@ -1,25 +1,41 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <div id="">
 
-        <form method="post">
-            {% csrf_token %}
-            <div class="wrapper">
-                <div class="main-style-form" id="login-form">
-                    <h3 class="text-primary">Sign in</h3>
-                    <label id="label-inner"> email</label>
-                    {{ form.username }}
-                    <label id="label-inner"> password </label>
-                    {{ form.password }}
-                    <h3 class="text-add-info"><a href="{% url 'password_reset' %}">forgotten password</a></h3>
-                    <div>
-                        <button class="btn btn-primary" type="submit">Log in</button>
-                    </div>
-                    <h3 class="text-add-info">If you don't have an account, <a href="/register">signUp</a> instead.</h3>
+
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card-body p-5 text-center">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="wrapper">
+                            <div class="main-style-form" id="login-form">
+                                <h3 class="text-primary">Sign in</h3>
+                                <label id="label-inner"> email</label>
+                                {{ form.username }}
+                                <label id="label-inner"> password </label>
+                                {{ form.password }}
+                                <h3 class="text-add-info"><a href="{% url 'password_reset' %}">Forgotten
+                                    password?</a></h3>
+                                <div>
+                                    <button class="btn btn-primary" type="submit">Log in</button>
+                                </div>
+                                <h3 class="text-add-info">Don't have an account? <a
+                                        href="/register">signUp</a></h3>
+
+                            </div>
+
+                        </div>
+                    </form>
+
 
                 </div>
-
             </div>
-        </form>
+        </div>
     </div>
+
+
+
+
+
 {% endblock %}

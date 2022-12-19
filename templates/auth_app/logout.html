@@ -1,13 +1,21 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <div class="main-style-form">
-        <h1>{{ request.user.galatechprofile.first_name }} are you sure you want to log out?</h1>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <div class="confirm-delete">
-           <a class="btn btn-primary" href="{% url 'logout' %}">Confirm</a>
-           <a class="btn btn-primary" href="{% url 'dashboard' %}">Go Back</a>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card-body p-5 text-center">
+                    <div class="main-style-form">
+                        <h2>{{ request.user.galatechprofile.first_name }} are you sure you want to log out?</h2>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="confirm-delete">
+                                <a class="btn btn-primary" href="{% url 'logout' %}">Confirm</a>
+                                <a class="btn btn-primary" href="{% url 'dashboard' %}">Go Back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
-    </div>
+        </div>
+        </div>
 {% endblock %}

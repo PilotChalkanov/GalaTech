@@ -1,5 +1,6 @@
 from django import forms
 
+from galatech.shop.models import Product
 from galatech.web.models import (
     Ticket,
     EmployeeVacationRequestModel,
@@ -46,3 +47,14 @@ class ContactMessageForm(forms.ModelForm):
     class Meta:
         model = ContactMessageModel
         fields = "__all__"
+
+class ProductCreateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = "__all__"
+        widgets =\
+            {
+            'type': forms.TextInput(
+                attrs={'class': 'form-control'}
+            )
+        }

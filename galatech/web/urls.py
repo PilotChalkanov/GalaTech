@@ -1,6 +1,7 @@
 from django.urls import path
 from galatech.web.views.about import AboutPageView
 from galatech.web.views.contact import ContactMessageView
+from galatech.web.views.products import CreateProductView
 from galatech.web.views.vacation_requests import (
     EmployeeVacationRequestView,
     ListEmployeeVacationRequestView,
@@ -23,4 +24,5 @@ urlpatterns = [
         ListEmployeeVacationRequestView.as_view(),
         name="list-days-off-req",
     ),
+    path("create_product/", CreateProductView.as_view(), name="create-product"),
 ]

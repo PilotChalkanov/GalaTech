@@ -7,3 +7,4 @@ register = Library()
 def placeholder(field, text):
     field.field.widget.attrs["placeholder"] = text
     return field
+
